@@ -1,7 +1,11 @@
-import { Table, Column, Model, HasMany } from "sequelize-typescript";
+import { Table, Column, Model, AutoIncrement } from "sequelize-typescript";
 
 @Table
 class Reward extends Model {
+  @Column
+  @AutoIncrement
+  id_reward!: number;
+
   @Column
   name!: string;
 

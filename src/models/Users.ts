@@ -1,8 +1,8 @@
 import { Table, Column, Model, HasMany } from "sequelize-typescript";
 
 @Table
-class Person extends Model {
-  @Column
+class User extends Model {
+  @Column({ primaryKey: true })
   username!: string;
 
   @Column
