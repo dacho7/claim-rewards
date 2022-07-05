@@ -1,0 +1,11 @@
+
+node_modules
+/dist
+
+# local env files
+.env.local
+.env.*.local
+
+# Editor directories and files
+.vscode
+package-lock.json
