@@ -1,13 +1,14 @@
 import express from "express";
 import cors from "cors";
+import { Server as webSocket } from "socket.io";
+import http from "http";
 
 import { router } from "./routes/index";
-
 import db from "./models";
 
-const app = express();
-
 const port = process.env.PORT || 3000;
+
+const app = express();
 
 // Enable cors
 app.use(cors());
@@ -21,7 +22,9 @@ app.use("/", router);
 
 // Initialize server
 db.sequelize.sync().then(() => {
-  app.listen(port, () => {
+  const server = http.createServer(app);
+  const httpServer = server.listen(port, () => {
     console.log("Runing on port", port);
   });
+  const io = new webSocket(httpServer);
 });
