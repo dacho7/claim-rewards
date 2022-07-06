@@ -3,7 +3,7 @@ import cors from "cors";
 import { Server as webSocket } from "socket.io";
 import http from "http";
 
-import { router } from "./routes/index";
+import { Sockets } from "./socket_server";
 import db from "./models";
 
 const port = process.env.PORT || 3000;
@@ -13,12 +13,8 @@ const app = express();
 // Enable cors
 app.use(cors());
 
-// Views engine
-app.set("views", __dirname + "/views");
-app.set("view engine", "ejs");
-
-// All routes
-app.use("/", router);
+// Views
+app.use(express.static(__dirname + "/views"));
 
 // Initialize server
 db.sequelize.sync().then(() => {
@@ -27,4 +23,5 @@ db.sequelize.sync().then(() => {
     console.log("Runing on port", port);
   });
   const io = new webSocket(httpServer);
+  Sockets(io);
 });

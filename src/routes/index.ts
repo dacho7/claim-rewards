@@ -13,7 +13,8 @@ router.get("/viewCreate", getViewCreate);
 
 //about route
 router.get("/about", (req, res) => {
-  res.render("about");
+  console.log(__dirname);
+  res.sendFile("../views/about.html", { root: __dirname });
 });
 
 //404 page

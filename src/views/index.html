@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Daily rewards <%= title %></title>
+    <title>Daily rewards</title>
   </head>
   <body>
     <nav>
@@ -14,10 +14,11 @@
       </div>
       <ul>
         <li><a href="/">Rewards</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/createreward">Create Rewards(Admin)</a></li>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/createreward.html">Create Rewards(Admin)</a></li>
       </ul>
     </nav>
-    <h1><%= title %></h1>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="socket_client.js"></script>
   </body>
 </html>

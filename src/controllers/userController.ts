@@ -2,12 +2,17 @@ import { Request, Response } from "express";
 import db from "../models";
 
 export const getMainView = async (req: Request, res: Response) => {
-  const { username } = req.body;
+  let username = false;
+
   try {
-    const user: any = await db.User.findByPk(username);
-    if (user) {
-      res.render("index", { user });
+    let user = {};
+    if (username) {
+      const userFinded: any = await db.User.findByPk(username);
+      if (userFinded) {
+        user = userFinded;
+      }
     }
+    res.render("index", { ...user, title: "Daily rewardsss" });
   } catch (error) {
     res.render("404");
   }

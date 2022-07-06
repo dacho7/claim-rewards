@@ -14,16 +14,22 @@
       </div>
       <ul>
         <li><a href="/">Rewards</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/createreward">Create Rewards(Admin)</a></li>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/createreward.html">Create Rewards(Admin)</a></li>
       </ul>
     </nav>
     <div>
       <form action="post">
         <label for="name">Reward name</label>
-        <input type="text" id="name" required />
+        <input placeholder="Reward name" type="text" id="name" required />
         <label for="credis">Required credits</label>
-        <input type="number" required />
+        <input
+          placeholder="
+        Enter number of credits"
+          type="number"
+          id="credits"
+          required
+        />
         <button type="submit">Submit</button>
       </form>
     </div>
