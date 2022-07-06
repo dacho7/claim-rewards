@@ -1,5 +1,6 @@
 "use strict";
 
+import { userInfo } from "os";
 import { Model } from "sequelize";
 
 interface UserAttributes {
