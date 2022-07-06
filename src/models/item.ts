@@ -2,43 +2,48 @@
 
 import { Model } from "sequelize";
 
-interface RewardAttributes {
+interface ItemAttributes {
   id: number;
-  name: string;
-  credits_require: number;
+  id_reward: number;
+  description: string;
+  percentage: number;
 }
 module.exports = (sequelize: any, DataTypes: any) => {
-  class Reward extends Model<RewardAttributes> implements RewardAttributes {
+  class Item extends Model<ItemAttributes> implements ItemAttributes {
     id!: number;
-    name!: string;
-    credits_require!: number;
+    id_reward!: number;
+    description!: string;
+    percentage!: number;
     static associate(models: any) {
       // define association here
     }
   }
-  Reward.init(
+  Item.init(
     {
       id: {
         type: DataTypes.INTEGER,
-        allowNull: false,
         primaryKey: true,
         autoIncrement: true,
       },
-      name: {
+      id_reward: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      description: {
         type: DataTypes.STRING,
         allowNull: false,
         unique: true,
       },
-      credits_require: {
-        type: DataTypes.INTEGER,
+      percentage: {
+        type: DataTypes.REAL,
         allowNull: false,
       },
     },
     {
       timestamps: false,
       sequelize,
-      modelName: "Reward",
+      modelName: "Item",
     }
   );
-  return Reward;
+  return Item;
 };
