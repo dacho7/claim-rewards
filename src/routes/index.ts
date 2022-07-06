@@ -1,6 +1,22 @@
-import { registerCredit } from "./../controllers/userController";
 import express from "express";
+
+import { registerCredit } from "../controllers/userController";
+import { viewCreate } from "../controllers/rewardController";
 
 export const router = express.Router();
 
+// User controller
 router.get("/", registerCredit);
+
+// Reward controller
+router.get("/viewCreate", viewCreate);
+
+//about route
+router.get("/about", (req, res) => {
+  res.render("about");
+});
+
+//404 page
+router.use((req, res) => {
+  res.status(404).render("404");
+});
