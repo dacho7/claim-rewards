@@ -1,7 +1,7 @@
 import express from "express";
 
 import { registerCredit } from "../controllers/userController";
-import { viewCreate } from "../controllers/rewardController";
+import { getViewCreate } from "../controllers/rewardController";
 
 export const router = express.Router();
 
@@ -9,7 +9,7 @@ export const router = express.Router();
 router.get("/", registerCredit);
 
 // Reward controller
-router.get("/viewCreate", viewCreate);
+router.get("/viewCreate", getViewCreate);
 
 //about route
 router.get("/about", (req, res) => {

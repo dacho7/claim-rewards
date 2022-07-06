@@ -2,11 +2,12 @@
 
 import { Model } from "sequelize";
 
-interface RewardAttributes {
-  id: number;
+export interface RewardAttributes {
+  id: number | null;
   name: string;
   credits_require: number;
 }
+
 module.exports = (sequelize: any, DataTypes: any) => {
   class Reward extends Model<RewardAttributes> implements RewardAttributes {
     id!: number;
