@@ -1,12 +1,12 @@
 import express from "express";
 
-import { registerCredit } from "../controllers/userController";
+import { registerCredit, getMainView } from "../controllers/userController";
 import { getViewCreate } from "../controllers/rewardController";
 
 export const router = express.Router();
 
 // User controller
-router.get("/", registerCredit);
+router.get("/", getMainView);
 
 // Reward controller
 router.get("/viewCreate", getViewCreate);

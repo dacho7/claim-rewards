@@ -2,8 +2,8 @@
 
 import { Model } from "sequelize";
 
-interface ItemAttributes {
-  id: number;
+export interface ItemAttributes {
+  id: number | null;
   id_reward: number;
   description: string;
   percentage: number;
