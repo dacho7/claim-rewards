@@ -5,29 +5,64 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Daily rewards</title>
+    <!-- CSS only -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
   </head>
   <body>
-    <nav>
-      <div>
-        <a href="/">Home</a>
-        <p>Daily Rewards</p>
-      </div>
-      <ul>
-        <li><a href="/">Rewards</a></li>
-        <li><a href="/about.html">About</a></li>
-        <li><a href="/createreward.html">Create Rewards(Admin)</a></li>
-      </ul>
-    </nav>
-    <form id="selectReward">
-      <div><h1>Reward 1</h1></div>
-      <button>Apply reward</button>
-      <ul>
-        <li>manzana</li>
-        <li>pera</li>
-      </ul>
-    </form>
+    <div class="container">
+      <nav class="mt-4 navbar navbar-dark bg-dark">
+        <div>
+          <a class="navbar-brand p-4" href="/">Rewards</a>
+        </div>
+        <form class="d-flex p-3">
+          <div>
+            <a class="navbar-brand p-4" href="/">Rewards Create (only Admin)</a>
+          </div>
+          <div>
+            <a class="navbar-brand p-4" href="/">About</a>
+          </div>
+        </form>
+      </nav>
+      <h2 class="pt-3">Daily Rewards</h2>
 
+      <div class="row pt-3">
+        <div class="col-2">
+          <input
+            class="form-control me-2"
+            id="username"
+            placeholder="Enter username"
+          />
+        </div>
+        <div class="col">
+          <button id="enterUser" class="btn btn-outline-success">
+            Igresar
+          </button>
+        </div>
+      </div>
+
+      <div id="rewardsbody">
+        <div>
+          <h1>hola</h1>
+        </div>
+        <form>
+          <button type="submit" class="btn btn-success" id="claimCredit">
+            Claim Credit
+          </button>
+        </form>
+      </div>
+    </div>
+    <!-- JavaScript Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+      crossorigin="anonymous"
+    ></script>
     <script src="/socket.io/socket.io.js"></script>
-    <script src="socket_client.js"></script>
+    <script src="main.js" type="module"></script>
   </body>
 </html>

@@ -1,10 +1,17 @@
 const socket = io();
-socket.on("loadrewards", (rewards) => {
-  console.log(rewards);
-});
 
-const selectReward = document.querySelector("#selectReward");
-selectReward.addEventListener("submit", (e) => {
-  e.preventDefault();
-  console.log(selectReward["title"].value);
-});
+export const userData = () => {
+  socket.on("getDataUser", (data) => {
+    console.log(data);
+  });
+};
+
+export const loadRewards = () => {
+  socket.on("loadrewards", (rewards) => {
+    console.log(rewards);
+  });
+};
+
+export const addCredits = (user) => {
+  socket.emit("addCredit", user);
+};

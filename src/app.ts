@@ -16,7 +16,7 @@ app.use(cors());
 // Views
 app.use(express.static(__dirname + "/views"));
 
-// Initialize server
+// Initialize server with webSockets
 db.sequelize.sync().then(() => {
   const server = http.createServer(app);
   const httpServer = server.listen(port, () => {

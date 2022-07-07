@@ -3,7 +3,7 @@
 import { userInfo } from "os";
 import { Model } from "sequelize";
 
-interface UserAttributes {
+export interface UserAttributes {
   username: string;
   credits: number;
 }

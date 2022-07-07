@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --verbose",
-    "dev": "tsnd --respawn src/app.ts",
-    "start": "tsc && node dist/src/app.js"
+    "dev": "tsnd --respawn src/App.ts",
+    "start": "tsc && node dist/src/App.js"
   },
   "keywords": [],
   "author": "",
