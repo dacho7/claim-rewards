@@ -26,7 +26,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
         primaryKey: true,
       },
       credits: {
-        type: DataTypes.NUMBER,
+        type: DataTypes.INTEGER,
         allowNull: false,
       },
       date_reward: {
