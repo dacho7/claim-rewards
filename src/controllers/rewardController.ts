@@ -24,7 +24,7 @@ export const rewardCreate = async (req: Request, res: Response) => {
   }
 };
 
-export const getRewards = async () => {
+export const getAllRewards = async () => {
   try {
     const allRewards: RewardView[] = [];
 
