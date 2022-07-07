@@ -1,9 +1,9 @@
 FROM node:15
 
-WORKDIR /src/app
+WORKDIR /
 
 COPY . .
 
 RUN npm install
 
-CMD ["npm", "start"]
+CMD ["npm", "run", "dev"]
