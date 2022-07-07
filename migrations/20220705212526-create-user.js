@@ -10,6 +10,9 @@ module.exports = {
       credits: {
         type: Sequelize.INTEGER,
       },
+      date_reward: {
+        type: Sequelize.DATE,
+      },
     });
   },
   async down(queryInterface, Sequelize) {

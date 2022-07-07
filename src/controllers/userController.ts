@@ -29,6 +29,7 @@ export const registerUser = async (username: string) => {
     const user: UserAttributes = {
       username,
       credits: 0,
+      date_reward: new Date(),
     };
     const res: any = await db.User.create(user);
     userCreated = res.dataValues;
@@ -59,6 +60,5 @@ export const getUser = async (username: string) => {
   } else {
     user = await registerUser(username);
   }
-  console.log(user);
   return user;
 };

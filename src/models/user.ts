@@ -6,12 +6,14 @@ import { Model } from "sequelize";
 export interface UserAttributes {
   username: string;
   credits: number;
+  date_reward: Date;
 }
 
 module.exports = (sequelize: any, DataTypes: any) => {
   class User extends Model<UserAttributes> implements UserAttributes {
     username!: string;
     credits!: number;
+    date_reward!: Date;
     static associate(models: any) {
       // define association here
     }
@@ -25,6 +27,10 @@ module.exports = (sequelize: any, DataTypes: any) => {
       },
       credits: {
         type: DataTypes.NUMBER,
+        allowNull: false,
+      },
+      date_reward: {
+        type: DataTypes.DATE,
         allowNull: false,
       },
     },
