@@ -7,11 +7,10 @@ const username = document.getElementById("username");
 const totalCredits = document.getElementById("totalCredits");
 
 export const renderRewards = (rewards) => {
-  const rewardsbody = document.getElementById("rewardsbody");
-  renderRewards.innerHTML = "";
-  console.log(rewards);
+  const body = document.getElementById("rewardsbody");
+  body.innerHTML = "";
   rewards.forEach((reward) => {
-    rewardsbody.innerHTML += `
+    body.innerHTML += `
         <div class="card">
             <div class="card-body">
               <h5 class="card-title">${reward.name}</h5>
@@ -27,7 +26,7 @@ export const renderRewards = (rewards) => {
         `;
     });
   });
-  rewardsbody.style.display = "";
+  body.style.display = "";
 };
 
 export const initialState = () => {
