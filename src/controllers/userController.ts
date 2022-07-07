@@ -68,13 +68,16 @@ export const getUser = async (username: string) => {
   return user;
 };
 
-export const spendCredit = async (username: string) => {
+export const spendCredit = async (username: string, requireCredits: number) => {
   try {
     const res = await db.User.findByPk(username);
     if (res) {
       const credits = res.dataValues.credits;
-      if (credits > 1) {
-        await db.User.update({ credits: credits - 1 }, { where: { username } });
+      if (credits >= requireCredits) {
+        await db.User.update(
+          { credits: credits - requireCredits },
+          { where: { username } }
+        );
       }
     }
   } catch (error) {

@@ -16,7 +16,6 @@ export const addCredits = (user) => {
   socket.emit("addCredit", user);
 };
 
-export const goReward = (user) => {
-  console.log("user", user);
-  socket.emit("goReward", user);
+export const goReward = (username, credits_require) => {
+  socket.emit("goReward", { username, credits_require });
 };

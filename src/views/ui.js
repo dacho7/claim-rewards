@@ -38,10 +38,28 @@ const setAddListenerButtons = () => {
     document
       .getElementById("goReward" + element.id)
       .addEventListener("click", () => {
-        goReward(username.value);
+        if (
+          element.credits_require <= Number(totalCredits.innerHTML.split("")[0])
+        ) {
+          calculateReward(element.items);
+          goReward(username.value, element.credits_require);
+        } else {
+          alert("You do not have available credits");
+        }
       });
   });
   body.style.display = "";
+};
+
+const calculateReward = (items) => {
+  const value = Math.random() * 100;
+  let range = 0;
+  items.forEach((item) => {
+    if (value > range && value <= range + item.percentage) {
+      alert(`You won ${item.description}`);
+    }
+    range += item.percentage;
+  });
 };
 
 export const initialState = () => {

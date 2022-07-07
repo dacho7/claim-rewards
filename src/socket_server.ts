@@ -18,9 +18,9 @@ export function Sockets(io: any) {
       socket.emit("loadDataUser", dataUser);
     };
 
-    const goReward = async (user: string) => {
-      await spendCredit(user);
-      await getDataUser(user);
+    const goReward = async (user: any) => {
+      await spendCredit(user.username, user.credits_require);
+      await getDataUser(user.username);
     };
 
     socket.on("getDataUser", getDataUser);
