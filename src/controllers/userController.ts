@@ -1,29 +1,59 @@
-import { Request, Response } from "express";
+import { UserAttributes } from "../models/User";
 import db from "../models";
 
-export const getMainView = async (req: Request, res: Response) => {
-  let username = false;
-
-  try {
-    let user = {};
-    if (username) {
-      const userFinded: any = await db.User.findByPk(username);
-      if (userFinded) {
-        user = userFinded;
-      }
-    }
-    res.render("index", { ...user, title: "Daily rewardsss" });
-  } catch (error) {
-    res.render("404");
+export const registerCredit = async (username: string) => {
+  const user: any = await db.User.findByPk(username);
+  if (user) {
+    console.log(user);
+  } else {
+    console.log("not exist");
   }
-};
-
-export const registerCredit = async (req: Request, res: Response) => {
-  res.render("index", { title: "Daily rewardsss" });
+  //await db.User.update({ where });
   //res.render("home");
   //res.send(users);
   // db.User.create({
   //   username: "davidtoo",
   //   credits: 10,
   // });
+  //return user;
+};
+
+export const registerUser = async (username: string) => {
+  let userCreated = {};
+  try {
+    const user: UserAttributes = {
+      username,
+      credits: 0,
+    };
+    const res: any = await db.User.create(user);
+    userCreated = res.dataValues;
+  } catch (error) {
+    console.log(error);
+  }
+  return userCreated;
+};
+
+export const isUserExist = async (username: string) => {
+  let userFinded = {};
+  try {
+    const user: any = await db.User.findByPk(username);
+    if (user) {
+      userFinded = user;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+  return userFinded;
+};
+
+export const getUser = async (username: string) => {
+  let user = {};
+  const resultUserFinded: any = await isUserExist(username);
+  if (Object.values(resultUserFinded).length !== 0) {
+    user = resultUserFinded.dataValues;
+  } else {
+    user = await registerUser(username);
+  }
+  console.log(user);
+  return user;
 };
