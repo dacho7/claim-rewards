@@ -1,20 +1,14 @@
-import { Request, Response } from "express";
-
 import { RewardAttributes } from "../models/Reward";
 
 import db from "../models";
 import { RewardView } from "./interfaces/RewardView";
 import { ItemAttributes } from "../models/Item";
 
-export const getViewCreate = (req: Request, res: Response) => {
-  res.render("createReward");
-};
-
-export const rewardCreate = async (req: Request, res: Response) => {
+export const rewardCreate = async (name: string, credits: number) => {
   const newReward: RewardAttributes = {
     id: null,
-    name: req.params.name,
-    credits_require: Number(req.params.credits),
+    name,
+    credits_require: credits,
   };
   try {
     const res = await db.Reward.save(newReward);
