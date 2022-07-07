@@ -8,6 +8,7 @@ export function Sockets(io: any) {
       const rewards = await getAllRewards();
       io.emit("loadRrewards", rewards);
     };
+
     emitRewards();
 
     const getDataUser = async (user: string) => {
@@ -16,8 +17,6 @@ export function Sockets(io: any) {
     };
 
     socket.on("getDataUser", getDataUser);
-
-    //socket.emit("getDataUser", (data) => {});
 
     socket.on("addCredit", async (user: string) => {
       await registerCredit(user);

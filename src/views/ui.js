@@ -1,3 +1,11 @@
+import { loadDatauser, getDataUser } from "./socket_client.js";
+
+const enterbutton = document.getElementById("enterUser");
+const rewardsbody = document.getElementById("rewardsbody");
+const rewardsButton = document.getElementById("rewardsButton");
+const username = document.getElementById("username");
+const totalCredits = document.getElementById("totalCredits");
+
 export const renderRewards = (rewards) => {
   const rewardsbody = document.getElementById("rewardsbody");
   renderRewards.innerHTML = "";
@@ -20,4 +28,29 @@ export const renderRewards = (rewards) => {
     });
   });
   rewardsbody.style.display = "";
+};
+
+export const initialState = () => {
+  rewardsbody.style.display = "none";
+  rewardsButton.style.display = "none";
+};
+
+export const handleInputUser = () => {
+  if (username.value.trim() !== "") {
+    enterbutton.innerHTML = "";
+    enterbutton.style.display = "none";
+    enterbutton.style.visibility = "hidden";
+    username.value = username.value.trim();
+    username.disabled = true;
+    rewardsbody.style.display = "";
+    rewardsButton.style.display = "";
+    getDataUser(username.value);
+    loadDatauser(setDataUser);
+  } else {
+    alert("ingrese usuario valido");
+  }
+};
+
+export const setDataUser = (data) => {
+  totalCredits.innerHTML = `${data.credits} Creditos`;
 };

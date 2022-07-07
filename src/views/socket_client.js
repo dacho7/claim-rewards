@@ -4,10 +4,8 @@ export const loadRewards = (callback) => {
   socket.on("loadRrewards", callback);
 };
 
-export const loadDatauser = () => {
-  socket.on("loadDataUser", (data) => {
-    console.log(data);
-  });
+export const loadDatauser = (callback) => {
+  socket.on("loadDataUser", callback);
 };
 
 export const getDataUser = (user) => {

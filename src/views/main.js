@@ -1,38 +1,18 @@
+import { loadRewards, getDataUser, addCredits } from "./socket_client.js";
 import {
-  loadRewards,
-  getDataUser,
-  loadDatauser,
-  addCredits,
-} from "./socket_client.js";
-import { renderRewards } from "./ui.js";
-
-loadRewards(renderRewards);
+  renderRewards,
+  initialState,
+  handleInputUser,
+  setDataUser,
+} from "./ui.js";
 
 const enterbutton = document.getElementById("enterUser");
-const rewardsbody = document.getElementById("rewardsbody");
-const rewardsButton = document.getElementById("rewardsButton");
-const username = document.getElementById("username");
 const claimCredit = document.getElementById("claimCredit");
 
-rewardsbody.style.display = "none";
-rewardsButton.style.display = "none";
+initialState();
+loadRewards(renderRewards);
 
-enterbutton.addEventListener("click", () => {
-  if (username.value.trim() !== "") {
-    enterbutton.innerHTML = "";
-    enterbutton.style.display = "none";
-    enterbutton.style.visibility = "hidden";
-    username.value = username.value.trim();
-    username.disabled = true;
-    rewardsbody.style.display = "";
-    rewardsButton.style.display = "";
-    loadRewards(renderRewards);
-    getDataUser(username.value);
-    loadDatauser();
-  } else {
-    alert("ingrese usuario valido");
-  }
-});
+enterbutton.addEventListener("click", handleInputUser);
 
 claimCredit.addEventListener("click", (e) => {
   e.preventDefault();
