@@ -1,30 +1,45 @@
-import { loadDatauser, getDataUser } from "./socket_client.js";
+import { loadDatauser, getDataUser, goReward } from "./socket_client.js";
 
 const enterbutton = document.getElementById("enterUser");
 const rewardsbody = document.getElementById("rewardsbody");
 const rewardsButton = document.getElementById("rewardsButton");
 const username = document.getElementById("username");
 const totalCredits = document.getElementById("totalCredits");
+const body = document.getElementById("rewardsbody");
+
+let rewardsOptions = [];
 
 export const renderRewards = (rewards) => {
-  const body = document.getElementById("rewardsbody");
+  rewardsOptions = [];
   body.innerHTML = "";
-  rewards.forEach((reward) => {
+  for (const reward of rewards) {
     body.innerHTML += `
         <div class="card">
             <div class="card-body">
               <h5 class="card-title">${reward.name}</h5>
               <div id="reward${reward.id}" class="card-text"></div>
-              <a href="#" class="btn btn-primary">Go reward</a>
+              <a id="goReward${reward.id}" class="btn btn-primary">Go reward</a>
             </div>
           </div>
       `;
     const items = document.getElementById("reward" + reward.id);
+    rewardsOptions.push(reward);
     reward.items.forEach((item) => {
       items.innerHTML += `
         <p>${item.description} ${item.percentage}%</p>
         `;
     });
+  }
+  setAddListenerButtons();
+};
+
+const setAddListenerButtons = () => {
+  rewardsOptions.forEach((element) => {
+    document
+      .getElementById("goReward" + element.id)
+      .addEventListener("click", () => {
+        goReward(username.value);
+      });
   });
   body.style.display = "";
 };

@@ -1,5 +1,9 @@
 import { getAllRewards } from "./controllers/rewardController";
-import { getUser, registerCredit } from "./controllers/userController";
+import {
+  getUser,
+  registerCredit,
+  spendCredit,
+} from "./controllers/userController";
 
 export function Sockets(io: any) {
   io.on("connection", (socket: any) => {
@@ -14,11 +18,18 @@ export function Sockets(io: any) {
       socket.emit("loadDataUser", dataUser);
     };
 
+    const goReward = async (user: string) => {
+      await spendCredit(user);
+      await getDataUser(user);
+    };
+
     socket.on("getDataUser", getDataUser);
 
     socket.on("addCredit", async (user: string) => {
       await registerCredit(user);
       await getDataUser(user);
     });
+
+    socket.on("goReward", goReward);
   });
 }
