@@ -2,20 +2,25 @@ import { UserAttributes } from "../models/User";
 import db from "../models";
 
 export const registerCredit = async (username: string) => {
-  const user: any = await db.User.findByPk(username);
-  if (user) {
-    console.log(user);
-  } else {
-    console.log("not exist");
+  try {
+    const res = await db.User.findByPk(username);
+    let registeredUser = {};
+    if (res) {
+      const newCredits = res.dataValues.credits;
+      await db.User.update(
+        { credits: newCredits + 1 },
+        { where: { username } }
+      );
+      const updatedUser = await db.User.findByPk(username);
+      registeredUser = updatedUser.dataValues;
+    } else {
+      registeredUser = false;
+    }
+    return registeredUser;
+  } catch (error) {
+    console.log(error);
+    return false;
   }
-  //await db.User.update({ where });
-  //res.render("home");
-  //res.send(users);
-  // db.User.create({
-  //   username: "davidtoo",
-  //   credits: 10,
-  // });
-  //return user;
 };
 
 export const registerUser = async (username: string) => {

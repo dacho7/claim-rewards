@@ -21,10 +21,12 @@
         </div>
         <form class="d-flex p-3">
           <div>
-            <a class="navbar-brand p-4" href="/">Rewards Create (only Admin)</a>
+            <a class="navbar-brand p-4" href="/createReward.html"
+              >Rewards Create (only Admin)</a
+            >
           </div>
           <div>
-            <a class="navbar-brand p-4" href="/">About</a>
+            <a class="navbar-brand p-4" href="/about.html">About</a>
           </div>
         </form>
       </nav>
@@ -39,22 +41,25 @@
           />
         </div>
         <div class="col">
-          <button id="enterUser" class="btn btn-outline-success">
+          <button id="enterUser" type="submit" class="btn btn-outline-success">
             Igresar
           </button>
         </div>
+        <div id="rewardsButton" class="col">
+          <div class="row">
+            <div class="col">
+              <button type="submit" class="btn btn-success" id="claimCredit">
+                Claim Credit
+              </button>
+            </div>
+            <div class="col">
+              <p>0 Credits</p>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div id="rewardsbody">
-        <div>
-          <h1>hola</h1>
-        </div>
-        <form>
-          <button type="submit" class="btn btn-success" id="claimCredit">
-            Claim Credit
-          </button>
-        </form>
-      </div>
+      <div class="m-4" id="rewardsbody"></div>
     </div>
     <!-- JavaScript Bundle with Popper -->
     <script

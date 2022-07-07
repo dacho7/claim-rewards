@@ -1,18 +1,21 @@
 import { ItemAttributes } from "./../models/Item";
-import { Request, Response } from "express";
 import db from "../models";
 
-export const createItem = async (req: Request, res: Response) => {
+export const createItem = async (
+  description: string,
+  id_reward: number,
+  percentage: number
+) => {
   const newItem: ItemAttributes = {
     id: null,
-    description: req.body.description,
-    id_reward: req.body.id_reward,
-    percentage: req.body.percentage,
+    description,
+    id_reward,
+    percentage,
   };
   try {
     const item = await db.Item.save(newItem);
-    res.send({ ok: true, data: item });
+    return item.dataValues;
   } catch (error) {
-    res.status(400).send({ ok: false, err: "something wrong" });
+    console.log(error);
   }
 };

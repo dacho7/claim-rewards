@@ -1,15 +1,17 @@
 const socket = io();
 
-export const userData = () => {
-  socket.on("getDataUser", (data) => {
+export const loadRewards = (callback) => {
+  socket.on("loadRrewards", callback);
+};
+
+export const loadDatauser = () => {
+  socket.on("loadDataUser", (data) => {
     console.log(data);
   });
 };
 
-export const loadRewards = () => {
-  socket.on("loadrewards", (rewards) => {
-    console.log(rewards);
-  });
+export const getDataUser = (user) => {
+  socket.emit("getDataUser", user);
 };
 
 export const addCredits = (user) => {
